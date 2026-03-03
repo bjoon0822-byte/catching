@@ -54,9 +54,9 @@ export const ArtisticHero: React.FC = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} // smooth ease-out-cubic
                 >
-                    <h2 className="text-[28px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-black tracking-tight leading-[1.1] text-white mb-4 sm:mb-8">
+                    <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-black tracking-tight leading-[1.1] text-white mb-4 sm:mb-8">
                         단언컨대 가장 확실한 <br />
-                        <span className="relative inline-block h-[1.2em] w-full mt-2">
+                        <span className="relative inline-block h-[1.3em] w-full mt-1 sm:mt-2">
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={wordIndex}
@@ -71,9 +71,8 @@ export const ArtisticHero: React.FC = () => {
                             </AnimatePresence>
                         </span>
                     </h2>
-                    <p className="text-slate-300 text-base sm:text-lg md:text-2xl font-medium max-w-3xl mx-auto mb-8 sm:mb-16 leading-relaxed opacity-90 tracking-wide px-2">
-                        AI가 브랜드를 진단하고, 최적의 마케팅 채널을 조합해 드립니다.<br className="hidden sm:inline" />
-                        견적부터 결제, 실시간 성과 트래킹까지 원스톱으로.
+                    <p className="text-slate-300 text-sm sm:text-lg md:text-2xl font-medium max-w-3xl mx-auto mb-8 sm:mb-16 leading-relaxed opacity-90 tracking-wide px-2">
+                        AI 마케팅 큐레이션, 견적부터 성과 트래킹까지 원스톱.
                     </p>
                 </motion.div>
 

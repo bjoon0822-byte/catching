@@ -150,7 +150,7 @@ export const Catalog: React.FC = () => {
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 relative z-20">
                     <motion.div
                         layout
-                        className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
                     >
                         <AnimatePresence>
                             {filteredModules.slice(0, 3).map((module) => {
@@ -174,7 +174,7 @@ export const Catalog: React.FC = () => {
                                         exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
                                         key={module.id}
-                                        className={`bg-white rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl ${c.hoverBorder} transition-all duration-500 group flex flex-col items-center text-center p-6 sm:p-8 relative cursor-pointer min-w-[240px] w-[75vw] sm:w-[80vw] md:w-auto md:min-w-0 snap-center shrink-0 md:shrink`}
+                                        className={`bg-white rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl ${c.hoverBorder} transition-all duration-500 group flex flex-col items-center text-center p-6 sm:p-8 relative cursor-pointer`}
                                         onClick={() => setSelectedModule(module)}
                                     >
                                         <div className={`w-16 h-16 ${c.bg} rounded-2xl flex items-center justify-center mb-6 shadow-sm ${c.border}`}>
@@ -183,7 +183,7 @@ export const Catalog: React.FC = () => {
                                         <h3 className="text-xl font-black text-slate-800 mb-3 tracking-tight">{module.title}</h3>
                                         <p className="text-slate-500 text-[13px] leading-relaxed mb-6 font-medium px-2">{module.description}</p>
                                         <div className="mt-auto w-full flex flex-col items-center">
-                                            <span className={`font-black text-2xl ${c.price} tracking-tighter mb-5`}>{formatPrice(module.basePrice)}원</span>
+                                            <span className={`font-black text-2xl ${c.price} tracking-tighter mb-5`}>{module.basePrice.toLocaleString('ko-KR')}원</span>
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); handleAddToCart(module.id); }}
                                                 disabled={isInCart(module.id)}
@@ -208,7 +208,7 @@ export const Catalog: React.FC = () => {
                         <div className="absolute inset-0 border-t border-slate-200 -z-20"></div>
 
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            <motion.div layout className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                                 <AnimatePresence>
                                     {filteredModules.slice(3).map((module) => {
                                         // 왜(Why): 서브 카드에서도 카테고리별 색상 적용
@@ -235,10 +235,10 @@ export const Catalog: React.FC = () => {
                                                 onClick={() => setSelectedModule(module)}
                                             >
                                                 {/* Image Placeholder Area */}
-                                                <div className="h-44 w-full bg-slate-50 relative flex items-center justify-center overflow-hidden">
+                                                <div className="h-28 sm:h-44 w-full bg-slate-50 relative flex items-center justify-center overflow-hidden">
                                                     <div className={`absolute inset-0 opacity-40 ${cc.gradient}`}></div>
                                                     <div className="absolute inset-0 opacity-[0.3] mix-blend-overlay" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
-                                                    <span className="relative z-10 text-3xl font-black text-slate-300 tracking-tighter uppercase"> {module.category}</span>
+                                                    <span className="relative z-10 text-xl sm:text-3xl font-black text-slate-300 tracking-tighter uppercase"> {module.category}</span>
                                                     <div className="absolute top-4 left-4 z-20">
                                                         <span className="px-3 py-1.5 text-[10px] font-black tracking-widest uppercase rounded-full bg-white/80 backdrop-blur-md text-slate-600 border border-slate-200 shadow-sm">
                                                             {module.category === 'tiktok' ? 'TikTok' : module.category === 'pr' ? 'Press' : module.category === 'sns' ? 'SNS' : module.category === 'meta' ? 'Meta' : module.category === 'search' ? 'Search' : module.category === 'tv' ? 'TV/CF' : module.category === 'global' ? 'Global' : 'O2O'}
@@ -247,19 +247,19 @@ export const Catalog: React.FC = () => {
                                                 </div>
 
                                                 {/* Card Content */}
-                                                <div className="p-6 pt-8 flex flex-col flex-1 relative">
+                                                <div className="p-3 sm:p-6 pt-6 sm:pt-8 flex flex-col flex-1 relative">
                                                     <motion.div
                                                         whileHover={{ rotate: -10, scale: 1.15 }}
-                                                        className="absolute -top-7 right-6 w-12 h-12 bg-white rounded-xl shadow-md border border-slate-200 flex items-center justify-center rotate-3 transition-transform"
+                                                        className="absolute -top-7 right-3 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl shadow-md border border-slate-200 flex items-center justify-center rotate-3 transition-transform"
                                                     >
                                                         {module.category === 'tiktok' ? <TrendingUp className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'pr' ? <Search className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'sns' ? <Camera className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'meta' ? <Search className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'search' ? <Search className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'tv' ? <Camera className={`w-5 h-5 ${cc.iconColor}`} /> : module.category === 'global' ? <TrendingUp className={`w-5 h-5 ${cc.iconColor}`} /> : <Camera className={`w-5 h-5 ${cc.iconColor}`} />}
                                                     </motion.div>
 
-                                                    <h3 className={`text-xl font-black text-slate-800 mb-2 tracking-tight ${cc.hoverText} transition-colors pr-2`}>{module.title}</h3>
-                                                    <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium line-clamp-2">{module.description}</p>
+                                                    <h3 className={`text-sm sm:text-xl font-black text-slate-800 mb-1 sm:mb-2 tracking-tight ${cc.hoverText} transition-colors pr-2 line-clamp-2`}>{module.title}</h3>
+                                                    <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-6 font-medium line-clamp-1 sm:line-clamp-2">{module.description}</p>
 
-                                                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-200">
-                                                        <span className={`font-black ${cc.priceColor} text-xl tracking-tight`}>{formatPrice(module.basePrice)}</span>
+                                                    <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between pt-3 sm:pt-4 border-t border-slate-200 gap-2">
+                                                        <span className={`font-black ${cc.priceColor} text-lg sm:text-xl tracking-tight`}>{module.basePrice.toLocaleString('ko-KR')}원</span>
                                                         <button className="flex items-center gap-1 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-[11px] font-bold text-slate-500 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all shadow-sm whitespace-nowrap shrink-0">
                                                             자세히 <ArrowRight className="w-3 h-3" />
                                                         </button>
