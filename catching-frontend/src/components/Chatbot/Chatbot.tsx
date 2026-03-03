@@ -306,7 +306,7 @@ export const Chatbot: React.FC = () => {
                             value={input}
                             onChange={handleTextareaChange}
                             onKeyDown={handleKeyDown}
-                            placeholder="AI에게 마케팅 전략을 물어보세요..."
+                            placeholder="무엇이든 물어보세요..."
                             className="flex-1 bg-transparent resize-none focus:outline-none px-2 py-3.5 text-slate-700 placeholder:text-slate-400 min-h-[52px] max-h-[140px] text-sm sm:text-base font-medium leading-relaxed scrollbar-hide"
                             disabled={isTyping}
                             rows={1}
