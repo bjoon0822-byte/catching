@@ -24,9 +24,7 @@ export const Catalog: React.FC = () => {
 
     const isInCart = (id: string) => items.some(item => item.id === id);
 
-    const formatPrice = (price: number) => {
-        return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(price);
-    }
+
 
     const filteredModules = MOCK_MODULES.filter(m => {
         const matchesTab = activeTab === 'all' || m.category === activeTab;
